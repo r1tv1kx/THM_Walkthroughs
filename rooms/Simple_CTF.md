@@ -1,8 +1,12 @@
-# Simple CTF - TryHackMe Walkthrough
+# TryHackMe – Simple CTF Walkthrough
+
 <div align="center">
   <img width="270" alt="Screenshot 2025-06-17 at 2 44 52 PM" src="https://github.com/user-attachments/assets/5ed4d768-9916-4a0e-85f0-8ea6fca1b284" />
 </div>
-Simple CTF on TryHackMe is a beginner-friendly room that teaches basic enumeration, exploitation, and privilege escalation techniques. It involves capturing user and root flags using tools like `nmap`, `gobuster`, and `hydra`.
+
+> **Room**: [Simple CTF](https://tryhackme.com/room/easyctf)  
+> **Difficulty**: Easy  
+> **Skills Covered**: Enumeration, Exploitation, Privilege Escalation
 
 ---
 
