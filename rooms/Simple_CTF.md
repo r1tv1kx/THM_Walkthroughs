@@ -1,4 +1,4 @@
-<div align='center'>
+<!--- <div align='center'>
   <img width="301" alt="Screenshot 2025-06-13 at 2 18 03 PM" src="https://github.com/user-attachments/assets/1f09acf9-5777-4362-819e-344c28d0f68a" />
 </div>
 Simple CTF on TryHackMe is a beginner-friendly room that teaches basic enumeration, exploitation, and privilege escalation techniques. It involves capturing user and root flags using tools like `nmap`, `gobuster`, and `hydra`.
@@ -37,6 +37,38 @@ Or we can directly google the vulnerability and check the CVE.
 By this information, we get to know the CVE of the vulnerability and the kind of vulnerability is the application vulnerable.
 (I am not giving the answers here for self exploring purposes.)
 
+Now we got the script, we will exploit it.( I will provide the script as exploit.py)
+![Screenshot 2025-06-17 at 1 05 31 PM](https://github.com/user-attachments/assets/3acea7ce-2e1c-4415-b937-528537adc89c)
 
+Below is the password which i have obatined from the wordlist ``` rockyou.txt ``` which i have used:
+```
+secret
+```
+Now we will try to login through ssh using the below command:
+```
+ssh mitch@(your provided address) -p 2222
+```
+<img width="534" alt="Screenshot 2025-06-17 at 1 49 28 PM" src="https://github.com/user-attachments/assets/f6adc721-f3bb-4b56-a37f-3a9295e4fb04" />
 
+Now, we will view the txt file for the flag.
+```
+nano user.txt
+```
+We got the flag.
 
+<img width="384" alt="Screenshot 2025-06-17 at 1 57 01 PM" src="https://github.com/user-attachments/assets/ee216a54-0c83-4dc9-a05b-85b4ed36485b" />
+
+By doing the above we got the name of our second user that is ```sunbath```.
+
+By ```sudo -l```, we can check the services with sudo permissions.
+
+<img width="399" alt="Screenshot 2025-06-17 at 2 04 38 PM" src="https://github.com/user-attachments/assets/d148f949-9031-4a13-86b6-d300c0967ea4" />
+
+Now using the command ```sudo vim -c ':/bin/sh'```
+
+<img width="269" alt="Screenshot 2025-06-17 at 2 18 57 PM" src="https://github.com/user-attachments/assets/3e04ac85-6745-4901-936f-03d2e62ed5a5" />
+
+We will go to root and then open the txt file present there.
+And its done!
+We found the flag!
+---> 
