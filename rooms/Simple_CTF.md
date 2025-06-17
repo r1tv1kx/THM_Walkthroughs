@@ -1,74 +1,83 @@
-<!--- <div align='center'>
-  <img width="301" alt="Screenshot 2025-06-13 at 2 18 03 PM" src="https://github.com/user-attachments/assets/1f09acf9-5777-4362-819e-344c28d0f68a" />
-</div>
+# Simple CTF - TryHackMe Walkthrough
+<img width="270" alt="Screenshot 2025-06-17 at 2 44 52 PM" src="https://github.com/user-attachments/assets/5ed4d768-9916-4a0e-85f0-8ea6fca1b284" />
+
 Simple CTF on TryHackMe is a beginner-friendly room that teaches basic enumeration, exploitation, and privilege escalation techniques. It involves capturing user and root flags using tools like `nmap`, `gobuster`, and `hydra`.
 
-Step 1:
+---
 
-<img width="479" alt="Screenshot 2025-06-13 at 2 28 06 PM" src="https://github.com/user-attachments/assets/d6cf96ba-d9c5-4a12-8cc8-21d4f0344b95" />
+## Step 1: Nmap Scan
 
-First we will scan the given ip address and check the available/open ports.
-Here we completed our first task, "How many services are running under port 1000?"
-Observe the available ports and then fill the answer.
+We begin by scanning the given IP address to identify open ports and services.
 
-Step 2:
+![Nmap Scan Result](https://github.com/user-attachments/assets/d6cf96ba-d9c5-4a12-8cc8-21d4f0344b95)
 
-When we run the command 
-```
+📌 **Task:** *How many services are running under port 1000?*  
+Inspect the results to answer.
+
+---
+
+## Step 2: Directory Enumeration
+
+Use `dirsearch` to find hidden directories:
+
+```bash
 python3 dirsearch.py -u http://10.10.248.5
 ```
-<img width="893" alt="Screenshot 2025-06-13 at 2 54 06 PM" src="https://github.com/user-attachments/assets/75847cd0-e1a8-4cf4-a8dc-f414774ac783" />
+<img width="548" alt="Screenshot 2025-06-17 at 2 32 10 PM" src="https://github.com/user-attachments/assets/b892e796-34fd-4aec-a2d0-10915d9e925b" />
 
-Here we found out that, there is a page named ` http://10.10.248.5/simple/ ` .
-When we visit this page and scroll down, we find that ` This site is powered by CMS Made Simple version 2.2.8 `, this statement is written.
-If we google the vulnerability of this website, we will find out the vulnerability of this website.
+We discover:
 
-We can also use the below method to find the CVE.
-<img width="893" alt="Screenshot 2025-06-13 at 3 21 13 PM" src="https://github.com/user-attachments/assets/0ba17bbf-f9a3-4038-8263-8fd33fc2d9d9" /> <br>
+```
+http://10.10.248.5/simple/
+```
 
-By using the command `vim 46635.py `
-![2025-06-13_15-52](https://github.com/user-attachments/assets/641a3cb9-bb93-4827-a762-47ff83670de2)
+Visiting this page reveals: ```This site is powered by CMS Made Simple version 2.2.8```
 
-We can check the CVE of this vulnerability.
+## Step 3: CVE Discovery
+You can manually Google known vulnerabilities for CMS Made Simple 2.2.8.
 
-Or we can directly google the vulnerability and check the CVE.
+Alternatively, use exploit scripts. For example:
+```
+vim 46635.py
+```
+<img width="547" alt="Screenshot 2025-06-17 at 2 33 02 PM" src="https://github.com/user-attachments/assets/a0c2dae0-46da-46d0-861f-686edc95f9f6" />
 
-<img width="1173" alt="Screenshot 2025-06-13 at 3 00 19 PM" src="https://github.com/user-attachments/assets/2f20b06a-b94a-486b-b83a-d838077b7309" />
-By this information, we get to know the CVE of the vulnerability and the kind of vulnerability is the application vulnerable.
-(I am not giving the answers here for self exploring purposes.)
+You can find the CVE manually or by using Exploit-DB or searchsploit.
 
-Now we got the script, we will exploit it.( I will provide the script as exploit.py)
-![Screenshot 2025-06-17 at 1 05 31 PM](https://github.com/user-attachments/assets/3acea7ce-2e1c-4415-b937-528537adc89c)
+## Step 4: Exploitation
+We exploit the CMS using a script (e.g., ```exploit.py```).
 
-Below is the password which i have obatined from the wordlist ``` rockyou.txt ``` which i have used:
+After running the script and using a password cracking method (e.g., with ```rockyou.txt```), we discover the password:
 ```
 secret
 ```
-Now we will try to login through ssh using the below command:
+## Step 5: SSH Access
+Use the credentials to log in via SSH:
 ```
-ssh mitch@(your provided address) -p 2222
+ssh mitch@<target-ip> -p 2222
 ```
-<img width="534" alt="Screenshot 2025-06-17 at 1 49 28 PM" src="https://github.com/user-attachments/assets/f6adc721-f3bb-4b56-a37f-3a9295e4fb04" />
+<img width="396" alt="Screenshot 2025-06-17 at 2 40 40 PM" src="https://github.com/user-attachments/assets/32045a71-050a-47c4-a456-96c274d21e47" />
 
-Now, we will view the txt file for the flag.
+Read the user flag:
 ```
 nano user.txt
 ```
-We got the flag.
+Also, you will discover the name of the second user:
+```
+sunbath
+```
+## Step 6: Privilege Escalation
+Check the current user’s sudo privileges:
+```
+sudo -l
+```
+<img width="358" alt="Screenshot 2025-06-17 at 2 41 39 PM" src="https://github.com/user-attachments/assets/09c09c60-dc44-40f6-9136-3590233c5059" />
 
-<img width="384" alt="Screenshot 2025-06-17 at 1 57 01 PM" src="https://github.com/user-attachments/assets/ee216a54-0c83-4dc9-a05b-85b4ed36485b" />
+We see that we can run vim with sudo.
+Use the following command to escalate privileges:
+```
+sudo vim -c ':!/bin/sh'
+```
+<img width="339" alt="Screenshot 2025-06-17 at 2 42 37 PM" src="https://github.com/user-attachments/assets/bb55c4f7-d608-4127-936c-58bdd3beabea" />
 
-By doing the above we got the name of our second user that is ```sunbath```.
-
-By ```sudo -l```, we can check the services with sudo permissions.
-
-<img width="399" alt="Screenshot 2025-06-17 at 2 04 38 PM" src="https://github.com/user-attachments/assets/d148f949-9031-4a13-86b6-d300c0967ea4" />
-
-Now using the command ```sudo vim -c ':/bin/sh'```
-
-<img width="269" alt="Screenshot 2025-06-17 at 2 18 57 PM" src="https://github.com/user-attachments/assets/3e04ac85-6745-4901-936f-03d2e62ed5a5" />
-
-We will go to root and then open the txt file present there.
-And its done!
-We found the flag!
----> 
+Once you have root access, read the ```root.txt``` file to capture the root flag.
