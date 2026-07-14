@@ -1,148 +1,163 @@
 # THM Walkthroughs
 
-> A curated collection of my TryHackMe walkthroughs, notes, and cybersecurity learning journey.
+> A comprehensive collection of my **TryHackMe** walkthroughs, methodologies, and cybersecurity notes, documenting my hands-on journey through penetration testing, privilege escalation, web exploitation, Active Directory, and Capture The Flag (CTF) challenges.
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/r1tv1kx/THM_Walkthroughs?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/r1tv1kx/THM_Walkthroughs?style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/r1tv1kx/THM_Walkthroughs?style=for-the-badge)
-![License](https://img.shields.io/badge/License-Educational-blue?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/r1tv1kx/THM_Walkthroughs?style=for-the-badge)
 
 ---
 
-## About
+# Overview
 
-This repository contains my personal walkthroughs for TryHackMe rooms.
+Cybersecurity is learned by doing.
 
-The purpose of this repository is to:
+This repository is my personal knowledge base built while solving **TryHackMe** rooms. Every walkthrough documents the complete thought process—from initial reconnaissance to privilege escalation—along with commands, explanations, screenshots, and lessons learned.
 
-- Document my learning journey
-- Improve methodology and note-taking
-- Build a practical cybersecurity knowledge base
-- Share knowledge with the cybersecurity community
-
-Each walkthrough focuses on understanding the methodology rather than simply obtaining flags.
+Rather than simply collecting flags, the goal is to understand **why an attack works**, how vulnerabilities are identified, and how similar techniques can be applied during real-world security assessments.
 
 ---
 
-## Topics Covered
+# What You'll Find
 
-- Information Gathering
-- Nmap Enumeration
-- Web Enumeration
-- Directory Bruteforcing
-- SQL Injection
-- Cross-Site Scripting (XSS)
-- File Upload Vulnerabilities
-- Authentication Bypass
-- Privilege Escalation
-- Windows Enumeration
-- Linux Enumeration
-- Active Directory Basics
-- Password Attacks
-- OSINT
-- Networking
-- Cryptography
-- Reverse Engineering
-- Web Exploitation
-- Capture The Flag (CTF)
+- Step-by-step room walkthroughs
+- Practical penetration testing methodologies
+- Enumeration techniques
+- Web application security testing
+- Windows & Linux privilege escalation
+- Active Directory attacks
+- Networking fundamentals
+- Exploitation techniques
+- Reverse engineering challenges
+- Cryptography exercises
+- OSINT investigations
+- Command references
+- Personal notes and key takeaways
 
 ---
 
-## Repository Structure
+# Skills Covered
+
+| Domain | Topics |
+|---------|--------|
+| Reconnaissance | Nmap, DNS Enumeration, SMB, FTP, HTTP |
+| Web Security | SQL Injection, XSS, File Upload, Authentication Bypass, LFI/RFI |
+| Exploitation | Manual Exploitation, Metasploit, Reverse Shells |
+| Privilege Escalation | Linux, Windows, SUID, Capabilities, Scheduled Tasks |
+| Active Directory | BloodHound, Kerberoasting, Pass-the-Hash, Enumeration |
+| Password Attacks | Hydra, John the Ripper, Hashcat |
+| Networking | TCP/IP, Services, Port Enumeration |
+| Forensics | Basic Analysis |
+| Cryptography | Hashes, Encoding, Encryption |
+| CTF Methodology | Flag Discovery & Problem Solving |
+
+---
+
+# Repository Structure
 
 ```text
-Room Name/
+THM_Walkthroughs/
 │
-├── README.md
-├── screenshots/
-├── exploit.py (if required)
-├── notes.txt
-└── additional resources
+├── Room-1/
+│   ├── README.md
+│   ├── screenshots/
+│   ├── notes/
+│   └── scripts/
+│
+├── Room-2/
+│   ├── README.md
+│   ├── screenshots/
+│   └── resources/
+│
+└── ...
 ```
 
-Each room generally includes:
+Each room typically includes:
 
 - Room Overview
-- Enumeration
 - Reconnaissance
-- Vulnerability Identification
+- Enumeration
 - Exploitation
 - Privilege Escalation
-- Flags
+- Flag Collection
+- Explanation of Vulnerabilities
+- Commands Used
+- Screenshots
 - Key Learnings
-- References
 
 ---
 
-## Tools Frequently Used
+# Tools Used
 
 - Nmap
+- Burp Suite
 - Gobuster
 - FFUF
-- Burp Suite
 - Hydra
-- Netcat
+- SQLMap
 - Metasploit Framework
+- Netcat
 - John the Ripper
 - Hashcat
-- Wireshark
-- SQLMap
-- LinPEAS
-- WinPEAS
 - BloodHound
 - CrackMapExec
 - Impacket
+- LinPEAS
+- WinPEAS
+- Wireshark
 - Python
+- Linux Terminal
 
 ---
 
-## Learning Goals
+# Why This Repository?
 
-This repository serves as my personal cybersecurity journal while preparing for:
+This repository serves as:
 
-- eJPT
-- PNPT
-- CPTS
-- OSCP
-- Real-world Penetration Testing
-- Bug Bounty Hunting
-
----
-
-## Disclaimer
-
-These walkthroughs are provided strictly for educational purposes.
-
-- Do not use any techniques demonstrated here against systems you do not own or have explicit permission to test.
-- Always follow responsible disclosure and ethical hacking practices.
+- A personal cybersecurity notebook
+- A reference for future assessments
+- A demonstration of practical offensive security skills
+- A portfolio showcasing consistent learning and documentation
+- A resource for anyone beginning their TryHackMe journey
 
 ---
 
-## Contributions
+# Current Learning Path
 
-If you find any mistakes, improvements, or better approaches, feel free to:
-
-- Open an Issue
-- Submit a Pull Request
-
-Constructive contributions are always welcome.
-
----
-
-## Support
-
-If you found this repository helpful, consider starring the repository and sharing it with others interested in cybersecurity.
+- Web Application Penetration Testing
+- Active Directory Security
+- Windows & Linux Privilege Escalation
+- Red Team Methodologies
+- Network Security
+- Vulnerability Assessment
+- Capture The Flag Challenges
 
 ---
 
-## Author
+# Disclaimer
+
+The content in this repository is intended **solely for educational purposes**.
+
+All techniques demonstrated should only be used in environments where you have explicit authorization. The author does not encourage or support unauthorized access to systems.
+
+---
+
+# Contributing
+
+Suggestions, corrections, and improvements are always welcome.
+
+If you discover a better methodology or identify an error, feel free to open an Issue or submit a Pull Request.
+
+---
+
+# Connect
 
 **Ritvik Singh**
 
-Cyber Security Analyst | Penetration Tester | Security Research Enthusiast
+Cyber Security Analyst | Penetration Tester | Security Researcher
 
-GitHub: https://github.com/r1tv1kx
 
 ---
 
-> "The best way to learn cybersecurity is by practicing ethically, documenting consistently, and never stopping your curiosity."
+> *"Every machine solved is another lesson learned. Every vulnerability understood is another step toward becoming a better security professional."*
