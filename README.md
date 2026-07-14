@@ -1,6 +1,8 @@
 # THM Walkthroughs
 
-> A comprehensive collection of my **TryHackMe** walkthroughs, methodologies, and cybersecurity notes, documenting my hands-on journey through penetration testing, privilege escalation, web exploitation, Active Directory, and Capture The Flag (CTF) challenges.
+> **Breaking machines. Learning techniques. Building skills.**
+>
+> This repository is a living journal of my journey through **TryHackMe**, where every room is an opportunity to think like an attacker, investigate like a defender, and grow as a cybersecurity professional.
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/r1tv1kx/THM_Walkthroughs?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/r1tv1kx/THM_Walkthroughs?style=for-the-badge)
@@ -9,86 +11,60 @@
 
 ---
 
-# Overview
+# Welcome
 
-Cybersecurity is learned by doing.
+Cybersecurity isn't learned by watching—it's learned by **breaking, fixing, failing, and trying again**.
 
-This repository is my personal knowledge base built while solving **TryHackMe** rooms. Every walkthrough documents the complete thought process—from initial reconnaissance to privilege escalation—along with commands, explanations, screenshots, and lessons learned.
+This repository captures that journey.
 
-Rather than simply collecting flags, the goal is to understand **why an attack works**, how vulnerabilities are identified, and how similar techniques can be applied during real-world security assessments.
+Inside, you'll find detailed walkthroughs of **TryHackMe** rooms covering everything from basic reconnaissance to advanced privilege escalation and Active Directory attacks. Every challenge is documented with a focus on understanding the *why* behind each step—not just collecting flags.
 
----
-
-# What You'll Find
-
-- Step-by-step room walkthroughs
-- Practical penetration testing methodologies
-- Enumeration techniques
-- Web application security testing
-- Windows & Linux privilege escalation
-- Active Directory attacks
-- Networking fundamentals
-- Exploitation techniques
-- Reverse engineering challenges
-- Cryptography exercises
-- OSINT investigations
-- Command references
-- Personal notes and key takeaways
+Whether you're a beginner starting your cybersecurity journey or someone looking for another perspective on solving a room, I hope these notes help you learn something new.
 
 ---
 
-# Skills Covered
+# What You'll Discover
 
-| Domain | Topics |
-|---------|--------|
-| Reconnaissance | Nmap, DNS Enumeration, SMB, FTP, HTTP |
-| Web Security | SQL Injection, XSS, File Upload, Authentication Bypass, LFI/RFI |
-| Exploitation | Manual Exploitation, Metasploit, Reverse Shells |
-| Privilege Escalation | Linux, Windows, SUID, Capabilities, Scheduled Tasks |
-| Active Directory | BloodHound, Kerberoasting, Pass-the-Hash, Enumeration |
-| Password Attacks | Hydra, John the Ripper, Hashcat |
-| Networking | TCP/IP, Services, Port Enumeration |
-| Forensics | Basic Analysis |
-| Cryptography | Hashes, Encoding, Encryption |
-| CTF Methodology | Flag Discovery & Problem Solving |
+- Practical walkthroughs with clear explanations
+- Real-world penetration testing methodology
+- Enumeration techniques that uncover hidden attack surfaces
+- Web application exploitation
+- Windows and Linux privilege escalation
+- Active Directory fundamentals and attacks
+- Password cracking techniques
+- Networking and service enumeration
+- Scripts, commands, and useful one-liners
+- Lessons learned from every challenge
 
 ---
 
-# Repository Structure
+# The Methodology
+
+Every walkthrough follows a structured approach:
 
 ```text
-THM_Walkthroughs/
-│
-├── Room-1/
-│   ├── README.md
-│   ├── screenshots/
-│   ├── notes/
-│   └── scripts/
-│
-├── Room-2/
-│   ├── README.md
-│   ├── screenshots/
-│   └── resources/
-│
-└── ...
+Recon
+   ↓
+Enumeration
+   ↓
+Vulnerability Discovery
+   ↓
+Exploitation
+   ↓
+Privilege Escalation
+   ↓
+Root/User Flags
+   ↓
+Lessons Learned
 ```
 
-Each room typically includes:
-
-- Room Overview
-- Reconnaissance
-- Enumeration
-- Exploitation
-- Privilege Escalation
-- Flag Collection
-- Explanation of Vulnerabilities
-- Commands Used
-- Screenshots
-- Key Learnings
+The objective isn't just to solve the room—it's to understand the mindset behind every decision.
 
 ---
 
-# Tools Used
+# Technologies & Tools
+
+Some of the tools you'll regularly encounter include:
 
 - Nmap
 - Burp Suite
@@ -98,66 +74,100 @@ Each room typically includes:
 - SQLMap
 - Metasploit Framework
 - Netcat
-- John the Ripper
-- Hashcat
 - BloodHound
 - CrackMapExec
 - Impacket
 - LinPEAS
 - WinPEAS
+- Hashcat
+- John the Ripper
 - Wireshark
 - Python
-- Linux Terminal
+- Bash
 
 ---
 
-# Why This Repository?
+# Repository Structure
 
-This repository serves as:
+```text
+THM_Walkthroughs/
+│
+├── Room Name/
+│   ├── README.md
+│   ├── screenshots/
+│   ├── scripts/
+│   └── notes/
+│
+├── Room Name/
+│   └── ...
+│
+└── README.md
+```
 
-- A personal cybersecurity notebook
-- A reference for future assessments
-- A demonstration of practical offensive security skills
-- A portfolio showcasing consistent learning and documentation
-- A resource for anyone beginning their TryHackMe journey
+Each walkthrough typically contains:
+
+- Room Overview
+- Reconnaissance
+- Enumeration
+- Exploitation
+- Privilege Escalation
+- Commands Used
+- Screenshots
+- Key Takeaways
+- References
 
 ---
 
-# Current Learning Path
+# Why This Repository Exists
 
-- Web Application Penetration Testing
-- Active Directory Security
+This repository is more than a collection of notes.
+
+It's a record of my progress as I continue exploring offensive security, documenting methodologies, and sharpening the skills required for real-world penetration testing.
+
+Every room solved adds another technique.
+Every mistake becomes another lesson.
+Every walkthrough is another step forward.
+
+---
+
+# Learning Never Stops
+
+Current areas of focus include:
+
+- Web Application Security
+- Active Directory
 - Windows & Linux Privilege Escalation
-- Red Team Methodologies
+- Red Team Techniques
 - Network Security
-- Vulnerability Assessment
 - Capture The Flag Challenges
+- Offensive Security Methodology
+
+As I continue learning, this repository will continue to grow.
 
 ---
 
 # Disclaimer
 
-The content in this repository is intended **solely for educational purposes**.
+All content in this repository is provided for **educational purposes only**.
 
-All techniques demonstrated should only be used in environments where you have explicit authorization. The author does not encourage or support unauthorized access to systems.
+These walkthroughs are intended for authorized labs and training environments such as TryHackMe. Never use these techniques against systems without explicit permission.
 
 ---
 
 # Contributing
 
-Suggestions, corrections, and improvements are always welcome.
+Have a better approach? Found a mistake? Want to share an alternative solution?
 
-If you discover a better methodology or identify an error, feel free to open an Issue or submit a Pull Request.
+Contributions, suggestions, and discussions are always welcome.
 
 ---
 
-# Connect
+# About Me
 
 **Ritvik Singh**
 
-Cyber Security Analyst | Penetration Tester | Security Researcher
-
+Cyber Security Analyst • Penetration Tester • Security Research Enthusiast
 
 ---
 
-> *"Every machine solved is another lesson learned. Every vulnerability understood is another step toward becoming a better security professional."*
+> **"Every machine tells a story. Every exploit teaches a lesson. Every walkthrough is one more step toward mastering cybersecurity."**
