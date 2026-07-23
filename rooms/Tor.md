@@ -1,4 +1,3 @@
-
 # TryHackMe – Tor for Beginners Walkthrough
 
 > **Room link**: https://tryhackme.com/room/torforbeginners  

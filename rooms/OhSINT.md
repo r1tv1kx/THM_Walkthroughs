@@ -1,4 +1,3 @@
-
 # TryHackMe – OhSINT Walkthrough
 
 > **Room**: [TryHackMe – OhSINT](https://tryhackme.com/room/ohsint)  
